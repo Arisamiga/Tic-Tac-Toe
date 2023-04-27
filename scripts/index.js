@@ -10,7 +10,7 @@ var reset = document.getElementById("reset");
 var allowed = [false, false, false, false, false, false, false, false, false];
 
 function setupPlayers() {
-    playerOne = Boolean(Math.random())
+    playerOne = Boolean(Math.round(Math.random()))
     if (playerOne == false) {
         indicator.innerText = "Its X's Turn";
     } else {
