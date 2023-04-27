@@ -21,10 +21,11 @@ body {
     font-family: Helvetica;
     font-weight: 700;
     letter-spacing: 0.25em;
-    color: rgb(0, 0, 0,);
+    color: rgb(0, 0, 0, );
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
+
 .Credits {
     background-color: rgb(182, 255, 182);
     padding: 20px;
@@ -40,11 +41,13 @@ body {
     display: grid;
     gap: 1vw;
     grid-template-columns: repeat(3, 1fr);
-    margin: 10vw auto auto 40vmin;
-    width: 10%;
-  }
-  
-div > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div>div {
     padding: 10px;
     background-color: rgb(129, 247, 145);
     text-align: center;
@@ -61,7 +64,7 @@ div > div {
     font-size: 5rem;
 }
 
-div > div:hover {
+div>div:hover {
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     border-color: rgb(0, 0, 0);
@@ -86,7 +89,7 @@ div > div:hover {
     font-family: Helvetica;
     font-weight: 700;
     letter-spacing: 0.25em;
-    color: rgb(0, 0, 0,);
+    color: rgb(0, 0, 0, );
     border-radius: 25px;
     border-style: solid;
     border-color: rgb(0, 0, 0);
@@ -116,7 +119,7 @@ div > div:hover {
     display: none;
 }
 
-.reset { 
+.reset {
     background-color: rgb(182, 255, 182);
     padding: 20px;
     text-align: center;
@@ -124,7 +127,7 @@ div > div:hover {
     font-family: Helvetica;
     font-weight: 700;
     letter-spacing: 0.25em;
-    color: rgb(0, 0, 0,);
+    color: rgb(0, 0, 0, );
     border-radius: 25px;
     border-style: solid;
     border-color: rgb(0, 0, 0);
@@ -135,6 +138,7 @@ div > div:hover {
     transform: translate(-50%, -50%);
     display: none;
 }
+
 .reset:hover {
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
