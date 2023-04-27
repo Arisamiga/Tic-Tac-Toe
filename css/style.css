@@ -82,7 +82,7 @@ div>div:hover {
 
 
 .StartGamebt {
-    background-color: rgb(182, 255, 182);
+    background-color: rgb(182, 255, 182, 0.8);
     padding: 20px;
     text-align: center;
     font-size: 35px;
@@ -115,7 +115,7 @@ div>div:hover {
     font-family: Helvetica;
     font-weight: 500;
     letter-spacing: 0.1em;
-    margin-top: 9vh;
+    margin-top: 60vh;
     display: none;
 }
 

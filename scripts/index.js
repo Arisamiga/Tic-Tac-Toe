@@ -23,7 +23,7 @@ async function startGame() {
     // Reseting the board
     for (let i = 0; i < list.length; i++) {
         document.getElementById(list[i]).innerText = "";
-        await sleep(500);
+        await sleep(200);
     }
     // Destroy StartGamebg
     document.getElementsByClassName("StartGamebg")[0].style.display = "none";
@@ -31,50 +31,50 @@ async function startGame() {
     setupPlayers();
 }
 
-function checkWin(){
+function checkWin() {
     var win = false;
     var winner = "";
     // Horizontal
-    if(document.getElementById(list[0]).innerText == document.getElementById(list[1]).innerText && document.getElementById(list[1]).innerText == document.getElementById(list[2]).innerText && document.getElementById(list[0]).innerText != ""){
+    if (document.getElementById(list[0]).innerText == document.getElementById(list[1]).innerText && document.getElementById(list[1]).innerText == document.getElementById(list[2]).innerText && document.getElementById(list[0]).innerText != "") {
         win = true;
         winner = document.getElementById(list[0]).innerText;
     }
-    else if(document.getElementById(list[3]).innerText == document.getElementById(list[4]).innerText && document.getElementById(list[4]).innerText == document.getElementById(list[5]).innerText && document.getElementById(list[3]).innerText != ""){
+    else if (document.getElementById(list[3]).innerText == document.getElementById(list[4]).innerText && document.getElementById(list[4]).innerText == document.getElementById(list[5]).innerText && document.getElementById(list[3]).innerText != "") {
         win = true;
         winner = document.getElementById(list[3]).innerText;
     }
-    else if(document.getElementById(list[6]).innerText == document.getElementById(list[7]).innerText && document.getElementById(list[7]).innerText == document.getElementById(list[8]).innerText && document.getElementById(list[6]).innerText != ""){
+    else if (document.getElementById(list[6]).innerText == document.getElementById(list[7]).innerText && document.getElementById(list[7]).innerText == document.getElementById(list[8]).innerText && document.getElementById(list[6]).innerText != "") {
         win = true;
         winner = document.getElementById(list[6]).innerText;
     }
     // Vertical
-    else if(document.getElementById(list[0]).innerText == document.getElementById(list[3]).innerText && document.getElementById(list[3]).innerText == document.getElementById(list[6]).innerText && document.getElementById(list[0]).innerText != ""){
+    else if (document.getElementById(list[0]).innerText == document.getElementById(list[3]).innerText && document.getElementById(list[3]).innerText == document.getElementById(list[6]).innerText && document.getElementById(list[0]).innerText != "") {
         win = true;
         winner = document.getElementById(list[0]).innerText;
     }
-    else if(document.getElementById(list[1]).innerText == document.getElementById(list[4]).innerText && document.getElementById(list[4]).innerText == document.getElementById(list[7]).innerText && document.getElementById(list[1]).innerText != ""){
+    else if (document.getElementById(list[1]).innerText == document.getElementById(list[4]).innerText && document.getElementById(list[4]).innerText == document.getElementById(list[7]).innerText && document.getElementById(list[1]).innerText != "") {
         win = true;
         winner = document.getElementById(list[1]).innerText;
     }
-    else if(document.getElementById(list[2]).innerText == document.getElementById(list[5]).innerText && document.getElementById(list[5]).innerText == document.getElementById(list[8]).innerText && document.getElementById(list[2]).innerText != ""){
+    else if (document.getElementById(list[2]).innerText == document.getElementById(list[5]).innerText && document.getElementById(list[5]).innerText == document.getElementById(list[8]).innerText && document.getElementById(list[2]).innerText != "") {
         win = true;
         winner = document.getElementById(list[2]).innerText;
     }
     // Diagonal
-    else if(document.getElementById(list[0]).innerText == document.getElementById(list[4]).innerText && document.getElementById(list[4]).innerText == document.getElementById(list[8]).innerText && document.getElementById(list[0]).innerText != ""){
+    else if (document.getElementById(list[0]).innerText == document.getElementById(list[4]).innerText && document.getElementById(list[4]).innerText == document.getElementById(list[8]).innerText && document.getElementById(list[0]).innerText != "") {
         win = true;
         winner = document.getElementById(list[0]).innerText;
     }
-    else if(document.getElementById(list[2]).innerText == document.getElementById(list[4]).innerText && document.getElementById(list[4]).innerText == document.getElementById(list[6]).innerText && document.getElementById(list[2]).innerText != ""){
+    else if (document.getElementById(list[2]).innerText == document.getElementById(list[4]).innerText && document.getElementById(list[4]).innerText == document.getElementById(list[6]).innerText && document.getElementById(list[2]).innerText != "") {
         win = true;
         winner = document.getElementById(list[2]).innerText;
     }
     // Check if its filled
-    else if (allowed.every( (val, i, arr) => val === true )) {
+    else if (allowed.every((val, i, arr) => val === true)) {
         win = true;
         winner = "Nobody";
     }
-    if(win){
+    if (win) {
         finishGame(winner);
     }
 
@@ -92,7 +92,7 @@ function finishGame(winner) {
 }
 ``
 function playerMove(element) {
-    if(allowed[list.indexOf(element.id)] == false){
+    if (allowed[list.indexOf(element.id)] == false) {
         if (playerOne) {
             indicator.innerText = "Its X's Turn";
             element.innerText = "O";
@@ -112,11 +112,11 @@ function playerMove(element) {
     }
 }
 
-document.addEventListener("click" , function(element){
+document.addEventListener("click", function (element) {
     if (element.target.className == "StartGamebt" && !gameStarted) {
         startGame();
     }
-    if(element.target.id.startsWith("b") && !element.target.disabled && gameStarted) {
+    if (element.target.id.startsWith("b") && !element.target.disabled && gameStarted) {
         playerMove(element.target)
     }
     if (element.target.id == "reset") {
