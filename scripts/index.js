@@ -22,7 +22,7 @@ async function startGame() {
   gameStarted = true;
   // Reseting the board
   for (let i = 0; i < list.length; i++) {
-    document.getElementById(list[i]).innerText = "";
+    document.getElementById(list[i]).innerHTML = "\xA0";
     await sleep(200);
   }
   // Destroy StartGamebg
@@ -117,7 +117,7 @@ function checkWin() {
     win = true;
     winner = "Nobody";
   }
-  if (win) {
+  if (win && winner != "" && winner != ' ') {
     finishGame(winner);
   }
 
