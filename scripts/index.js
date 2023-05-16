@@ -20,6 +20,7 @@ function setupPlayers() {
 
 async function startGame() {
   gameStarted = true;
+  document.getElementsByClassName("StartGamebt")[0].style.display = "none";
   // Reseting the board
   for (let i = 0; i < list.length; i++) {
     document.getElementById(list[i]).innerHTML = "\xA0";
