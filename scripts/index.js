@@ -1,6 +1,5 @@
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+sleep = (ms) => return new Promise((resolve) => setTimeout(resolve, ms));
+
 // Global variables
 var playerOne = false;
 var list = ["b0", "b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8"];
@@ -11,11 +10,7 @@ var allowed = [false, false, false, false, false, false, false, false, false];
 
 function setupPlayers() {
   playerOne = Boolean(Math.round(Math.random()));
-  if (playerOne == false) {
-    indicator.innerText = "Its X's Turn";
-  } else {
-    indicator.innerText = "Its O's Turn";
-  }
+  playerOne == false ? indicator.innerText = "Its X's Turn" : indicator.innerText = "Its O's Turn";
 }
 
 async function startGame() {
@@ -128,11 +123,9 @@ function checkWin() {
 function finishGame(winner) {
   gameStarted = false;
   reset.style.display = "block";
-  if (winner == "Nobody") {
-    indicator.innerText = "Nobody won! How sad...";
-  } else indicator.innerText = "The winner is " + winner + "!";
+  winner == "Nobody" ? indicator.innerText = "Nobody won! How sad..." :  indicator.innerText = "The winner is " + winner + "!";
 }
-``;
+
 function playerMove(element) {
   if (allowed[list.indexOf(element.id)] == false) {
     if (playerOne) {
