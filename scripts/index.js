@@ -22,8 +22,8 @@ async function startGame() {
   gameStarted = true;
   document.getElementsByClassName("StartGamebt")[0].style.display = "none";
   // Reseting the board
-  for (let i = 0; i < list.length; i++) {
-    document.getElementById(list[i]).innerHTML = "\xA0";
+  for(let i of list){
+    document.getElementById(i.innerHTML = "\xA0";
     await sleep(200);
   }
   // Destroy StartGamebg
