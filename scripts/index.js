@@ -23,7 +23,7 @@ async function startGame() {
   document.getElementsByClassName("StartGamebt")[0].style.display = "none";
   // Reseting the board
   for(let i of list){
-    document.getElementById(i.innerHTML = "\xA0";
+    document.getElementById(i).innerHTML = "\xA0";
     await sleep(200);
   }
   // Destroy StartGamebg
