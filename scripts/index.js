@@ -1,9 +1,14 @@
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
 // Helper Functions
 getElementById = (id) => document.getElementById(id);
+
 getElementByClassName = (className) =>
   document.getElementsByClassName(className);
+
+isArrayEqual = (arr) => arr.every((n) => n === arr[0]);
+
+getInnerText = (selector) => selector.innerText;
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // Global variables
 var playerOne = false;
@@ -37,73 +42,44 @@ async function startGame() {
 function checkWin() {
   var win = false;
   var winner = "";
-  // Horizontal
-  if (
-    getElementById(list[0]).innerText == getElementById(list[1]).innerText &&
-    getElementById(list[1]).innerText == getElementById(list[2]).innerText &&
-    getElementById(list[0]).innerText != ""
-  ) {
-    win = true;
-    winner = getElementById(list[0]).innerText;
-  } else if (
-    getElementById(list[3]).innerText == getElementById(list[4]).innerText &&
-    getElementById(list[4]).innerText == getElementById(list[5]).innerText &&
-    getElementById(list[3]).innerText != ""
-  ) {
-    win = true;
-    winner = getElementById(list[3]).innerText;
-  } else if (
-    getElementById(list[6]).innerText == getElementById(list[7]).innerText &&
-    getElementById(list[7]).innerText == getElementById(list[8]).innerText &&
-    getElementById(list[6]).innerText != ""
-  ) {
-    win = true;
-    winner = getElementById(list[6]).innerText;
-  }
-  // Vertical
-  else if (
-    getElementById(list[0]).innerText == getElementById(list[3]).innerText &&
-    getElementById(list[3]).innerText == getElementById(list[6]).innerText &&
-    getElementById(list[0]).innerText != ""
-  ) {
-    win = true;
-    winner = getElementById(list[0]).innerText;
-  } else if (
-    getElementById(list[1]).innerText == getElementById(list[4]).innerText &&
-    getElementById(list[4]).innerText == getElementById(list[7]).innerText &&
-    getElementById(list[1]).innerText != ""
-  ) {
-    win = true;
-    winner = getElementById(list[1]).innerText;
-  } else if (
-    getElementById(list[2]).innerText == getElementById(list[5]).innerText &&
-    getElementById(list[5]).innerText == getElementById(list[8]).innerText &&
-    getElementById(list[2]).innerText != ""
-  ) {
-    win = true;
-    winner = getElementById(list[2]).innerText;
-  }
-  // Diagonal
-  else if (
-    getElementById(list[0]).innerText == getElementById(list[4]).innerText &&
-    getElementById(list[4]).innerText == getElementById(list[8]).innerText &&
-    getElementById(list[0]).innerText != ""
-  ) {
-    win = true;
-    winner = getElementById(list[0]).innerText;
-  } else if (
-    getElementById(list[2]).innerText == getElementById(list[4]).innerText &&
-    getElementById(list[4]).innerText == getElementById(list[6]).innerText &&
-    getElementById(list[2]).innerText != ""
-  ) {
-    win = true;
-    winner = getElementById(list[2]).innerText;
-  }
-  // Check if its filled
-  else if (allowed.every((val, i, arr) => val === true)) {
+
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  lines.forEach((line) => {
+    // convert line into the actual game values
+
+    let tempLine = [
+      getInnerText(getElementById(list[line[0]])),
+      getInnerText(getElementById(list[line[1]])),
+      getInnerText(getElementById(list[line[2]])),
+    ];
+
+    // check if each line value is equal and not blank
+
+    if (isArrayEqual(tempLine) && tempLine[0] != "\xa0") {
+      win = true;
+      winner = tempLine[0];
+    }
+  });
+
+  // keep fallback case for a draw
+
+  if (allowed.every((val, i, arr) => val === true)) {
     win = true;
     winner = "Nobody";
   }
+
+  // finish game
+
   if (win && winner != "" && winner != " ") {
     finishGame(winner);
   }
